@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-BaseModel module for the AirBnB clone project.
+BaseModel class for AirBnB clone project
 """
 
 import uuid
@@ -8,38 +8,33 @@ from datetime import datetime
 
 
 class BaseModel:
-    """
-    BaseModel that defines common attributes/methods for all classes.
-    """
+    """Defines all common attributes/methods for other classes"""
 
     def __init__(self, *args, **kwargs):
-        """
-        Initializes a new instance of BaseModel.
-        If kwargs is provided, recreate instance from dictionary.
-        Otherwise, create new one with unique id and current timestamps.
-        """
+        """Initialize a new BaseModel"""
         if kwargs:
+            # If using a dict (e.g. from to_dict()), rebuild object
             for key, value in kwargs.items():
-                if key == "__class__":
-                    continue
-                if key in ("created_at", "updated_at"):
-                    value = datetime.fromisoformat(value)
-                setattr(self, key, value)
+                if key == "created_at" or key == "updated_at":
+                    setattr(self, key, datetime.fromisoformat(value))
+                elif key != "__class__":
+                    setattr(self, key, value)
         else:
+            # Create a brand new instance
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
 
     def __str__(self):
-        """Return string representation"""
-        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
+        """Return a string representation"""
+        return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
 
     def save(self):
-        """Update updated_at with current datetime"""
+        """Update updated_at with the current datetime"""
         self.updated_at = datetime.now()
 
     def to_dict(self):
-        """Return dict representation with ISO datetime"""
+        """Return a dictionary containing all keys/values of __dict__"""
         obj_dict = self.__dict__.copy()
         obj_dict["__class__"] = self.__class__.__name__
         obj_dict["created_at"] = self.created_at.isoformat()
