@@ -1,8 +1,5 @@
 #!/usr/bin/python3
-"""
-BaseModel class for AirBnB clone project
-"""
-
+"""BaseModel class for AirBnB clone project"""
 import uuid
 from datetime import datetime
 
