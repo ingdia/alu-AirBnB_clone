@@ -1,17 +1,21 @@
 #!/usr/bin/python3
 """
-BaseModel class for AirBnB clone project"""
-
-import uuid
+This module defines the BaseModel class, which is a common base
+for other classes in the AirBnB project.
+"""
 from datetime import datetime
+import uuid
 import models
 
 
 class BaseModel:
-    """Defines all common attributes/methods for other classes"""
-
+    """
+    Defines all common attributes/methods for other classes.
+    """
     def __init__(self, *args, **kwargs):
-        """Initialize a new BaseModel"""
+        """
+        Initializes a new BaseModel instance.
+        """
         if kwargs:
             for key, value in kwargs.items():
                 if key in ["created_at", "updated_at"]:
