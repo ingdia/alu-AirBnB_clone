@@ -1,0 +1,4 @@
+footer{
+        background-color:#f2e8e8; height:60px; width: 100%; display: flex; justify-content: center; text-align: center; position:fixed;
+        border-top: 1px solid #ccc;
+    }
