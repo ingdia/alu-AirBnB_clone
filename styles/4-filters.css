@@ -6,7 +6,7 @@
     border-radius: 4px;
     display: flex;
     align-items: center;
-    
+    justify-content: space-around;
 }
 button{
  font-size: 18px;
@@ -17,6 +17,27 @@ button{
     border:none;
     border-radius: 4px; 
     opacity: 0.9;
-   margin-left: 800px;
     margin-right: 30px; 
 }
+.locations{
+    height:100%;
+    width: 25%;
+    color: black;
+    border-right:1px solid #DDD;
+}
+.amenities{
+    height:100%;
+    width: 25%;
+    color: black;
+    
+}
+h3{
+    font-weight: 600;
+
+}
+h4{
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: -10px;
+}
+
